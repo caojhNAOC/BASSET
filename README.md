@@ -1,3 +1,4 @@
+# <img src="BASSET_logo.png" width="200" />
 # Bandpass-Adaptive Single-pulse SEarch Toolkit (BASSET)
 
 **BASSET** is a new user-friendly search toolkit for [PRESTO](https://github.com/scottransom/presto).  
