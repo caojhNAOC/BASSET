@@ -23,3 +23,18 @@ Compared to `prepsubband`, the following two parameters have been added:
 ### Command Example:
 ```bash
 prepsubband_BASSET -nobary -nsub 4096 -lodm 1202 -dmstep 0 -numdms 1 -BASSET_minL 100 -BASSET_Ls 100,200,300,400,500,600,800,1000,1200,1400,1600,1800,2000 -ignorechan 0:16,690:837,1420:1450,2775:2855,3800:3970 -o FAST_data.fits FAST_data.fits
+```
+
+## How to Mask RFI Using `rfi-mask.py`
+
+**rfi-mask.py** is designed to mask Radio Frequency Interference (RFI) from FITS files based on wavelet transformation. It is similar to `rfifind` in [PRESTO](https://github.com/scottransom/presto). It requires three input parameters:
+
+- `file`: The FITS file.
+- `time`: The time in seconds used for the `rfifind`.
+- `sigma`: The threshold value for wavelet-based RFI removal.
+
+### Command Example:
+
+```bash
+python rfi-mask.py -file FAST_data.fits -time 0.06 -sigma 0.5
+```
