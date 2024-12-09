@@ -27,7 +27,7 @@ prepsubband_BASSET -nobary -nsub 4096 -lodm 1202 -dmstep 0 -numdms 1 -BASSET_min
 
 ### prepsubband_BASSET_accelerate
 
-BASSET applies GPU and OpenMP acceleration. It uses only 1 GPU, but you can specify which GPU to use by setting the `CUDA_VISIBLE_DEVICES` environment variable (see the [CUDA documentation](https://developer.nvidia.com/cuda-toolkit)).
+BASSET applies GPU and OpenMP acceleration. Each BASSET process uses only 1 GPU, and you can specify which GPU to use by setting the `CUDA_VISIBLE_DEVICES` environment variable (see the [CUDA documentation](https://developer.nvidia.com/cuda-toolkit)).
 
 OpenMP is controlled by the `-ncpus` parameter, which specifies the number of processors to use.
 
@@ -35,7 +35,7 @@ OpenMP is controlled by the `-ncpus` parameter, which specifies the number of pr
 
 ### Command Example:
 ```bash
-CUDA_VISIBLE_DEVICES=1 prepsubband_BASSET -ncpus 20 -nobary -nsub 4096 -lodm 1202 -dmstep 0 -numdms 1 -BASSET_minL 100 -BASSET_Ls 100,200,300,400,500,600,800,1000,1200,1400,1600,1800,2000 -ignorechan 0:16,690:837,1420:1450,2775:2855,3800:3970 -o FAST_data.fits FAST_data.fits
+CUDA_VISIBLE_DEVICES=1 prepsubband_BASSET_accelerate -ncpus 20 -nobary -nsub 4096 -lodm 1202 -dmstep 0 -numdms 1 -BASSET_minL 100 -BASSET_Ls 100,200,300,400,500,600,800,1000,1200,1400,1600,1800,2000 -ignorechan 0:16,690:837,1420:1450,2775:2855,3800:3970 -o FAST_data.fits FAST_data.fits
 ```
 
 ## How to Mask RFI Using `rfi-mask.py`
