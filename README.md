@@ -6,10 +6,10 @@ BASSET can significantly improve the detection sensitivity for narrow-band pulse
 
 ## How to Install BASSET
 
-Place the corresponding `BASSET.c` and `BASSET.h` files into the `src` and `include` directories of PRESTO.  
+Place the files from the `src` and `include` directories of this library into the `src` and `include` directories of PRESTO.  
 Update the Makefile (an example is provided in the `src` directory of this library), then run `make`.  
 Afterwards, `prepsubband_BASSET` and `prepsubband_BASSET_accelerate` will appear in the PRESTO `bin` folder.  
-They function similarly to the `prepsubband` in [PRESTO](https://github.com/scottransom/presto).
+These two commands are similar to the `prepsubband` command in [PRESTO](https://github.com/scottransom/presto).
 
 ## How to Use BASSET
 
@@ -18,7 +18,7 @@ They function similarly to the `prepsubband` in [PRESTO](https://github.com/scot
 Compared to `prepsubband`, the following two parameters have been added:
 
 - `BASSET_Ls`: Lengths of the box-car function to match-filter pulses, with units in channels (at least 5 lengths, comma-separated string, no spaces).
-- `BASSET_minL`: Candidates with bandwidth smaller than `BASSET_minL` will be removed. This value is typically chosen as 1/4 of the minimum of `BASSET_Ls`.
+- `BASSET_minL`: Length used to smooth the spectrum. This value is typically chosen as 1/4 of the minimum value from `BASSET_Ls`.
 
 ### Command Example:
 ```bash
@@ -27,7 +27,7 @@ prepsubband_BASSET -nobary -nsub 4096 -lodm 1202 -dmstep 0 -numdms 1 -BASSET_min
 
 ### prepsubband_BASSET_accelerate
 
-BASSET applies GPU and OpenMP acceleration. It uses only 1 GPU by default, but you can specify which GPU to use by setting the `CUDA_VISIBLE_DEVICES` environment variable (see the [CUDA documentation](https://developer.nvidia.com/cuda-toolkit)).
+BASSET applies GPU and OpenMP acceleration. It uses only 1 GPU, but you can specify which GPU to use by setting the `CUDA_VISIBLE_DEVICES` environment variable (see the [CUDA documentation](https://developer.nvidia.com/cuda-toolkit)).
 
 OpenMP is controlled by the `-ncpus` parameter, which specifies the number of processors to use.
 
