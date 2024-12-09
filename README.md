@@ -25,6 +25,19 @@ Compared to `prepsubband`, the following two parameters have been added:
 prepsubband_BASSET -nobary -nsub 4096 -lodm 1202 -dmstep 0 -numdms 1 -BASSET_minL 100 -BASSET_Ls 100,200,300,400,500,600,800,1000,1200,1400,1600,1800,2000 -ignorechan 0:16,690:837,1420:1450,2775:2855,3800:3970 -o FAST_data.fits FAST_data.fits
 ```
 
+### prepsubband_BASSET_accelerate
+
+BASSET applies GPU and OpenMP acceleration. It uses only 1 GPU by default, but you can specify which GPU to use by setting the `CUDA_VISIBLE_DEVICES` environment variable (see the [CUDA documentation](https://developer.nvidia.com/cuda-toolkit)).
+
+OpenMP is controlled by the `-ncpus` parameter, which specifies the number of processors to use.
+
+- **`-ncpus`**: Number of processors to use with OpenMP.
+
+### Command Example:
+```bash
+CUDA_VISIBLE_DEVICES=1 prepsubband_BASSET -ncpus 20 -nobary -nsub 4096 -lodm 1202 -dmstep 0 -numdms 1 -BASSET_minL 100 -BASSET_Ls 100,200,300,400,500,600,800,1000,1200,1400,1600,1800,2000 -ignorechan 0:16,690:837,1420:1450,2775:2855,3800:3970 -o FAST_data.fits FAST_data.fits
+```
+
 ## How to Mask RFI Using `rfi-mask.py`
 
 **rfi-mask.py** is designed to mask Radio Frequency Interference (RFI) from FITS files based on wavelet transformation. It is similar to `rfifind` in [PRESTO](https://github.com/scottransom/presto). It requires three input parameters:
