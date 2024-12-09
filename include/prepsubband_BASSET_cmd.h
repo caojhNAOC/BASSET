@@ -14,8 +14,7 @@ typedef struct s_Cmdline {
   char BASSET_LsP;
   char* BASSET_Ls;
   int BASSET_LsC;
-  /* -BASSET_minL: Candidates with bandwidth smaller than BASSET_minL will be removed. 
-  * This value is typically chosen as 1/4 of min(BASSET_Ls) */
+  /* -BASSET_minL: Length used to smooth the spectrum. This value is typically chosen as 1/4 of the minimum value from BASSET_Ls. */
   char BASSET_minLP;
   int BASSET_minL;
   int BASSET_minLC;

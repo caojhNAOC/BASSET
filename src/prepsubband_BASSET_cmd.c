@@ -27,8 +27,7 @@ static Cmdline cmd = {
   /* BASSET_LsP = */ 0,
   /* BASSET_Ls = */ (char*)0,
   /* BASSET_LsC = */ 0,
-  /* -BASSET_minL: Candidates with bandwidth smaller than BASSET_minL will be removed. 
-  * This value is typically chosen as 1/4 of min(BASSET_Ls) */
+  /* -BASSET_minL: Length used to smooth the spectrum. This value is typically chosen as 1/4 of the minimum value from BASSET_Ls. */
   /* BASSET_minLP = */ 0,
   /* BASSET_minL = */ (int)0,
   /* BASSET_minLC = */ 0,
@@ -850,8 +849,7 @@ showOptionValues(void)
     }
   }
 
-  /* -BASSET_minL: Candidates with bandwidth smaller than BASSET_minL will be removed. 
-  * This value is typically chosen as 1/4 of min(BASSET_Ls) */
+  /* -BASSET_minL: Length used to smooth the spectrum. This value is typically chosen as 1/4 of the minimum value from BASSET_Ls. */
   if( !cmd.BASSET_minLP ) {
     printf("-ncpus not found.\n");
   } else {
@@ -1178,7 +1176,7 @@ usage(void)
   fprintf(stderr,"%s","  [-BASSET_Ls BASSET_Ls] [-BASSET_minL BASSET_minL] [-ncpus ncpus] -o outfile [-filterbank] [-psrfits] [-noweights] [-noscales] [-nooffsets] [-wapp] [-window] [-numwapps numwapps] [-if ifs] [-clip clip] [-noclip] [-invert] [-zerodm] [-runavg] [-sub] [-subdm subdm] [-numout numout] [-nobary] [-offset offset] [-start start] [-lodm lodm] [-dmstep dmstep] [-numdms numdms] [-nsub nsub] [-downsamp downsamp] [-dmprec dmprec] [-mask maskfile] [-ignorechan ignorechanstr] [--] infile ...\n");
   fprintf(stderr,"%s","      Converts a raw radio data file into many de-dispersed time-series (including barycentering).\n");
   fprintf(stderr,"%s","      -BASSET_Ls: Lengths of the box-car function to match-filter pulses, with units in channels (at least 5 lengths, comma-separated string, no spaces).\n");
-  fprintf(stderr,"%s","      -BASSET_minL: Candidates with bandwidth smaller than BASSET_minL will be removed. This value is typically chosen as 1/4 of min(BASSET_Ls)\n");
+  fprintf(stderr,"%s","      -BASSET_minL: Length used to smooth the spectrum. This value is typically chosen as 1/4 of the minimum value from BASSET_Ls.\n");
   fprintf(stderr,"%s","         -ncpus: Number of processors to use with OpenMP\n");
   fprintf(stderr,"%s","                 1 int value between 1 and oo\n");
   fprintf(stderr,"%s","                 default: `1'\n");
