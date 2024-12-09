@@ -31,7 +31,7 @@ BASSET applies GPU and OpenMP acceleration. It uses only 1 GPU by default, but y
 
 OpenMP is controlled by the `-ncpus` parameter, which specifies the number of processors to use.
 
-- **`-ncpus`**: Number of processors to use with OpenMP.
+- `ncpus`: Number of processors to use with OpenMP.
 
 ### Command Example:
 ```bash
